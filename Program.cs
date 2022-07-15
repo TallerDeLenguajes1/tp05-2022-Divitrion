@@ -1,38 +1,25 @@
-﻿int a,b,operacion,resultado=0;
-bool end=true;
+﻿int numero, cociente, resto;
+string numeroParaMostrar = "";
 
-do
+Console.WriteLine("Ingrese el numero a invertir: ");
+numero = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine($"El número ingresado es: {numero}");
+
+cociente = numero;
+if (numero <= 0)
 {
-    Console.WriteLine("Que operacion quiere hacer");
-    Console.WriteLine("Resta [0], Suma [1], Multiplicacion [2], Division [3]");
-    operacion = Convert.ToInt32(Console.ReadLine());
-    Console.WriteLine("Ingrese los numeros a operar");
-    a = Convert.ToInt32(Console.ReadLine());
-    b = Convert.ToInt32(Console.ReadLine());
-
-    switch (operacion)
+    Console.Clear();
+    Console.WriteLine("Solo está permitido invertir números positivos");
+}
+else
+{
+    while (cociente > 0)
     {
-        case 0:
-            resultado = a-b;
-        break;
-        case 1:
-            resultado = a+b;
-        break;
-        case 2:
-            resultado = a*b;
-        break;
-        case 3:
-            resultado = a/b;
-        break;
+        resto = cociente % 10;
+        cociente = cociente / 10;
+        numeroParaMostrar += resto.ToString();
     }
-
-    Console.WriteLine($"El resultado es: {resultado}");
-
-    Console.WriteLine("Quiere hacer otra operacion? No [0], Si [1]");
-    operacion = Convert.ToInt32(Console.ReadLine());
-    if (operacion<1)
-    {
-        end=false;
-    }
-
-} while (end);
+    Console.Clear();
+    Console.WriteLine($"El número ingresado es: {numero}");
+    Console.WriteLine($"El número invertido es: {numeroParaMostrar}");
+}
